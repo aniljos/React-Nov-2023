@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.js" integrity="sha512-/1uYu3K5HmOTNdhaOt6Rh7qQgLk/zn0kfw4nqNtqbpACxAx2tKp+lXJ4tnx3zn0vMq4n97+1eKI0vfdU0x+NHg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <h4>React Application</h4>
+    <div id="app1"></div>
+    <div id="app2"></div>
+    <div id="app3"></div>
+    <div id="app4"></div>
+    
+    <script type="text/babel">
+
+        //create an HTML element <div>This is a React element</div>
+        var element1 = React.createElement("div", null, "This is a React element");
+        //Add the element to the DOM: added as child of the div with id="app1"
+        ReactDOM.createRoot(document.getElementById("app1")).render(element1);
+
+        //create an HTML element <div><h4>This is a React element</h4></div>
+
+        var element2 = React.createElement("div", null, 
+                        React.createElement("h4", null, "This is a React nested element"));
+        ReactDOM.createRoot(document.getElementById("app2")).render(element2);
+
+        //create an HTML element <div><h4>This is a React element</h4></div> using JSX
+        ReactDOM.createRoot(document.getElementById("app3"))
+                                            .render(<div><h4>This is a React JSX generated element</h4></div>)
+        //create a component(UI) and render it on the the div with id="app4"
+
+        function MyComponent(){
+            //return the UI (JSX)
+            return (
+                <div>
+                    <h4>React Component</h4>
+                    <p>This is a simple component</p>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("app4")).render(<MyComponent/>);
+
+
+
+    </script>
+
+</body>
+</html>
