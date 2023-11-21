@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import Hello from './components/Hello';
 import './App.css';
 import Counter from './components/Counter';
+import FnCounter from './components/FnCounter';
 
 function App() {
   return (
@@ -23,11 +24,13 @@ function App() {
       </header>
 
       <main>
-        <Hello message="React"/>
-        <Hello message="World"/>
+        {/* <Hello message="React"/>
+        <Hello message="World"/> */}
 
-        <Counter value={10} title='Count' />
-        <Counter value={15}/>
+        {/* <Counter value={10} title='Count' />
+        <Counter value={15}/> */}
+
+        <FnCounter/>
         
       </main>
     </div>
