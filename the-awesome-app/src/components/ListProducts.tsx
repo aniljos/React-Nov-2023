@@ -30,6 +30,44 @@ function ListProducts(){
             });
     }
 
+    // function deleteProduct(product: Product){
+
+    //     const url = base_url + "/products/" + product.id;
+    //     axios
+    //         .delete(url)
+    //         .then((response)=> {
+                
+    //             fetchProducts();
+    //             alert("record deleted");
+
+    //         }, (errorResponse)=>{
+    //             alert("failed to delete");
+    //         })
+    // }
+    async function deleteProduct(product: Product){
+
+        const url = base_url + "/products/" + product.id;
+        try {
+            
+            //promise fulfilled
+            const response = await axios.delete(url);
+            //fetchProducts();
+            const copy_of_products = [...products];
+            const index = copy_of_products.findIndex(item => item.id === product.id);
+            copy_of_products.splice(index, 1);
+            setProducts(copy_of_products);
+
+
+            alert("record deleted");
+
+
+        } catch (errorResponse) {
+            
+            //promise rejected
+            alert("failed to delete");
+        }
+    }
+
     return (
         <div>
             <h4>List Products</h4>
@@ -41,6 +79,12 @@ function ListProducts(){
                             <p>{item.name}</p>
                             <p>{item.price}</p>
                             <p>{item.description}</p>
+                            <div>
+                                <button className='btn btn-danger' 
+                                                    onClick={() => { deleteProduct(item)}}>Delete</button>&nbsp;
+                                <button className='btn btn-primary'>Edit</button>
+                            </div>
+
                         </div>
                     )
 

@@ -53,6 +53,17 @@ class Counter extends Component<CounterProps>{
             </div>
         )
     }
+    componentDidMount(): void {
+        console.log("[Counter] mounted")
+    }
+    componentWillUnmount(): void {
+        console.log("[Counter] unmounting")
+    }
+    componentDidUpdate(prevProps: Readonly<CounterProps>, prevState: Readonly<{}>, snapshot?: any): void {
+        console.log("[Counter] updated")
+    }
+
+
 }
 
 export default Counter;

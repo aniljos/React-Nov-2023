@@ -1,13 +1,37 @@
-import {ChangeEvent, useState, useRef} from 'react';
+import {ChangeEvent, useState, useRef, useEffect} from 'react';
 
 function FnCounter(){
 
     const [counter, setCounter] = useState(5);
     const inputRef = useRef<HTMLInputElement>(null)
 
+
+   
+
+   
+    useEffect(() => {
+        console.log("useEffect invoked only once in its lifecycle: when mounted");
+        inputRef.current?.focus();
+
+        //unmounted
+        return () => {
+            console.log("useEffect invoked only once in its lifecycle: when unmounted");
+        }
+
+    }, [])
+
+    
+    useEffect(() => {
+
+        console.log("useEffect invoked only multiple times in its lifecycle: when updated");
+        console.log("counter", counter);
+        
+    }, [counter])
+
     function inc(){
         console.log("inc invoked..");
         setCounter(counter + 1);
+       
         
     }
     const decr = () => {

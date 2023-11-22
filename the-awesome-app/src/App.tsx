@@ -10,8 +10,8 @@ function App() {
   return (
 
     <Router>
-      <div className='container'>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <div className='container-fluid'>
+        <nav className="navbar navbar-dark bg-dark">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">React</a>
             <ul className="nav">
