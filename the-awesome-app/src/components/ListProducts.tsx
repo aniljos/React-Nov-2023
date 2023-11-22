@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Product} from '../model/Product';
 import './Listproducts.css';
 import {useNavigate} from 'react-router-dom';
+import { useTitle } from '../hooks/useTitle';
 
 
 const base_url = "http://localhost:9000";
@@ -18,6 +19,7 @@ function ListProducts(){
     }, []);
     const [products, setProducts] = useState<Product []>([]);
     const navigate = useNavigate();
+    useTitle("Products");
 
 
     function fetchProducts(){

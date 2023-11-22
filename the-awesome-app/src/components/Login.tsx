@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Alert from './Alert';
+import { useTitle } from '../hooks/useTitle';
 
 function Login(){
 
@@ -10,6 +11,10 @@ function Login(){
     const [message, setMessage] = useState("");
     const [severity, setSeverity] = useState("");
     const navigate = useNavigate();
+    useTitle("Login");
+
+
+   
 
     async function login(){
 
@@ -28,15 +33,27 @@ function Login(){
         }
         else{
 
-            setSeverity("info");
+            setSeverity("error");
             setMessage("Provide the credentials");
         }
     }
+    const closeAlert  = useCallback(() => {
+        setMessage("");
+    }, [])
+
+    const calculateValue = useMemo(() => {
+
+        console.log("in calculateValue");
+        return userName  + 1000;
+    }, [userName]);
+
     return (
         <div>
             <h4>Login</h4>
 
-            {message ? <Alert message={message} severity={severity}/> : null}
+            <p>Calaculated Value : {calculateValue}</p>
+
+            {message ? <Alert message={message} severity={severity} onClose={closeAlert}/> : null}
 
             <div className="form-group">
                 <label>UserName</label>
