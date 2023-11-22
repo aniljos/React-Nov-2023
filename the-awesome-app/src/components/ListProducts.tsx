@@ -2,6 +2,8 @@ import {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Product} from '../model/Product';
 import './Listproducts.css';
+import {useNavigate} from 'react-router-dom';
+
 
 const base_url = "http://localhost:9000";
 
@@ -15,6 +17,7 @@ function ListProducts(){
         fetchProducts();
     }, []);
     const [products, setProducts] = useState<Product []>([]);
+    const navigate = useNavigate();
 
 
     function fetchProducts(){
@@ -68,6 +71,11 @@ function ListProducts(){
         }
     }
 
+    function editProduct(product: Product){
+
+        navigate("/products/" + product.id);
+    }
+
     return (
         <div>
             <h4>List Products</h4>
@@ -82,7 +90,8 @@ function ListProducts(){
                             <div>
                                 <button className='btn btn-danger' 
                                                     onClick={() => { deleteProduct(item)}}>Delete</button>&nbsp;
-                                <button className='btn btn-primary'>Edit</button>
+                                <button className='btn btn-primary'
+                                                    onClick={() => {editProduct(item)}}>Edit</button>
                             </div>
 
                         </div>

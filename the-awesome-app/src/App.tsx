@@ -5,6 +5,7 @@ import FnCounter from './components/FnCounter';
 import ListProducts from './components/ListProducts';
 import 'bootstrap/dist/css/bootstrap.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import EditProduct from './components/EditProduct';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
               <Route path='/counter' element={<Counter value={10}/>} />
               <Route path='/fncounter' element={<FnCounter/>} />
               <Route path='/products' Component={ListProducts} />
+              <Route path='/products/:id' Component={EditProduct}/>
             </Routes>
         </main>
       </div>
