@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { Product } from '../model/Product';
 
@@ -12,6 +12,9 @@ function EditProduct(){
         fetchProduct()
     }, []);
     const [product, setProduct] = useState<Product>(new Product(0, "", 0, ""));
+    const navigate = useNavigate();
+
+    
 
     async function fetchProduct(){
 
@@ -37,6 +40,26 @@ function EditProduct(){
         setProduct({...product, name: value});
     }
 
+    async function save(){
+
+        try{
+
+            const url = base_url + "/products/" + product.id;
+            await axios.put(url, product);
+            alert("Updated successfully");
+            navigate(-1);
+
+        }
+        catch(errorResponse){
+            alert("Update Failed");
+        }
+
+    }
+
+    function cancel(){
+        navigate(-1);
+    }
+
     return (
         <div>
             <h4>Edit Product : {params.id}</h4>
@@ -60,8 +83,8 @@ function EditProduct(){
             </div>
             <br/>
             <div>
-                <button className="btn btn-primary">Save</button>&nbsp;
-                <button className="btn btn-warning">Cancel</button>
+                <button className="btn btn-primary" onClick={save}>Save</button>&nbsp;
+                <button className="btn btn-warning" onClick={cancel}>Cancel</button>
             </div>
         </div>
     )
