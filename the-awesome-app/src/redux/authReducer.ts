@@ -20,6 +20,8 @@ interface AuthAction{
 }
 export const authReducer = (currentState=initState, action: AuthAction)=> {
 
-
+    if(action.type === "SET_AUTH"){
+        return action.payload
+    }
     return currentState;
 }
