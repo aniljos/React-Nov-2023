@@ -23,7 +23,7 @@ function ListProducts(){
 
 
     function fetchProducts(){
-        const url = base_url + "/products";
+        const url = base_url + "/secure_products";
         axios
             .get<Array<Product>>(url)
             .then((response) => {
