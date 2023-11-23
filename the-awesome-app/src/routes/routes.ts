@@ -5,6 +5,7 @@ import GadgetStore from "../components/GadgetStore";
 import Hello from "../components/Hello";
 import ListProducts from "../components/ListProducts";
 import Login from "../components/Login";
+import ViewCart from "../components/ViewCart";
 
 export interface AppRoute{
 
@@ -64,6 +65,12 @@ export const routes: AppRoute[] =[
         isMainMenu: true,
         component: Login
     },
+    {
+        path: "/viewcart",
+        title: "View Cart",
+        isMainMenu: true,
+        component: ViewCart
+    }
 
 
 ] 

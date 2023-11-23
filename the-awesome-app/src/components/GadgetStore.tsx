@@ -1,9 +1,29 @@
 import {useAxiosFetchProducts} from '../hooks/useAxiosFetchProducts';
+import { CartItem } from '../model/CartItem';
+import { Product } from '../model/Product';
+import {useDispatch, useSelector} from 'react-redux';
+import { AppDispatch, AppState } from '../redux/store';
+import { createAddToCartAction, createSetProductsAction } from '../redux/actionCreators';
+import { useEffect } from 'react';
 
 function GadgetStore(){
 
-    const [products, setProducts] =  useAxiosFetchProducts();
+    //const [products, setProducts] =  useAxiosFetchProducts();
+    const products = useSelector((state: AppState) => state.gadgets.products);
+    const dispatch = useDispatch<any>();
+    
+    useEffect(() => {
 
+        dispatch(createSetProductsAction())
+
+    }, [])
+
+
+    function addToCart(product: Product){
+
+        //dispatch({type: "ADD_TO_CART", payload: new CartItem(product, 1)});
+        dispatch(createAddToCartAction(new CartItem(product, 1)));
+    }
     
     function renderProducts() {
 
@@ -15,7 +35,7 @@ function GadgetStore(){
                             <h5 className="card-title">{item.name}</h5>
                             <p className="card-text">{item.description}</p>
                             <p className="card-text text-primary">INR {item.price}</p>
-                            <button className="btn btn-primary">Add To Cart</button>
+                            <button className="btn btn-primary" onClick={() => addToCart(item)}>Add To Cart</button>
                         </div>
                     </div>
     
