@@ -17,3 +17,6 @@ var copy = {...user, location: "Blr"};
 
 console.log("user", user);
 console.log("copy", copy);
+
+
+
