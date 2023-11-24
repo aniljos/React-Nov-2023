@@ -1,12 +1,20 @@
+import React from "react";
 import Counter from "../components/Counter";
 import EditProduct from "../components/EditProduct";
 import FnCounter from "../components/FnCounter";
 import FnCounterWithError from "../components/FnCounterWithError";
-import GadgetStore from "../components/GadgetStore";
+
 import Hello from "../components/Hello";
 import ListProducts from "../components/ListProducts";
 import Login from "../components/Login";
 import ViewCart from "../components/ViewCart";
+
+//static import
+//import GadgetStore from "../components/GadgetStore";
+
+//dynamic import
+const GadgetStore = React.lazy(() => import('../components/GadgetStore'));
+
 
 export interface AppRoute{
 

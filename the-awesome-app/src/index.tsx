@@ -7,6 +7,7 @@ import { store } from './redux/store';
 import { Provider } from 'react-redux';
 import AppThemeProvider, { AppThemeContext, initialTheme } from './context/AppThemeContext';
 import AppErrorBoundary from './error-boundary/AppErrorBoundary';
+import './axios/interceptors';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

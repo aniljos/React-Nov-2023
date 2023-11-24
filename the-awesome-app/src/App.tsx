@@ -1,19 +1,21 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Navigation from './components/Navigation';
-import {AppRoute, routes} from './routes/routes';
+import { AppRoute, routes } from './routes/routes';
 import ProtectedRoute from './components/ProtectedRoute';
+import { Suspense } from 'react';
 
 function App() {
   return (
 
-    <Router>
+    <Router basename='/Training/'>
       <div className='container-fluid'>
-       
-        <Navigation/>
+
+        <Navigation />
 
         {/* Routes(Views) to be rendered */}
         <main>
+          <Suspense fallback={"Loading..."}>
             <Routes>
               {/* <Route path='/' element={<Hello message='React'/>} />
               <Route path='/counter' element={<Counter value={10}/>} />
@@ -25,24 +27,25 @@ function App() {
 
               {routes.map((item: AppRoute) => {
 
-                if(item.isProtected){
+                if (item.isProtected) {
                   return (
-                   
-                  <Route key={item.path}  path={item.path} 
-                          element={<ProtectedRoute> <item.component {...item.props} /> </ProtectedRoute>} />
-                    
-                    
+
+                    <Route key={item.path} path={item.path}
+                      element={<ProtectedRoute> <item.component {...item.props} /> </ProtectedRoute>} />
+
+
                   )
                 }
-                else{
+                else {
                   return (
                     <Route key={item.path} path={item.path} element={<item.component {...item.props} />} />
                   )
                 }
 
-                
+
               })}
             </Routes>
+          </Suspense>
         </main>
       </div>
     </Router>

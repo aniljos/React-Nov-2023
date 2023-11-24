@@ -58,7 +58,7 @@ function ListProducts() {
     // }
     async function deleteProduct(product: Product) {
 
-        const url = base_url + "/products/" + product.id;
+        const url = base_url + "/secure_products/" + product.id;
         try {
 
             //promise fulfilled
