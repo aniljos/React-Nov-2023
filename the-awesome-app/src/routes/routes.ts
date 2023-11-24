@@ -1,6 +1,7 @@
 import Counter from "../components/Counter";
 import EditProduct from "../components/EditProduct";
 import FnCounter from "../components/FnCounter";
+import FnCounterWithError from "../components/FnCounterWithError";
 import GadgetStore from "../components/GadgetStore";
 import Hello from "../components/Hello";
 import ListProducts from "../components/ListProducts";
@@ -38,7 +39,7 @@ export const routes: AppRoute[] =[
         title: "FnCounter",
         isMainMenu: true,
         component: FnCounter,
-        isProtected: true
+        isProtected: false
     },
     {
         path: "/products",
@@ -70,6 +71,12 @@ export const routes: AppRoute[] =[
         title: "View Cart",
         isMainMenu: true,
         component: ViewCart
+    },
+    {
+        path: "/error",
+        title: "FnCounterError",
+        isMainMenu: true,
+        component: FnCounterWithError
     }
 
 

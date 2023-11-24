@@ -8,6 +8,19 @@ const Navigation = React.memo(() => {
     const context =  useContext<ThemeState>(AppThemeContext);
 
     const mode = context.mode;
+    
+    function switchTheme(){
+
+        if(context.dispatch){
+            if(mode === "dark"){
+                context.dispatch({type: "SET_LIGHT"})
+            }
+            else{
+                context.dispatch({type: "SET_DARK"})
+            }
+        }
+       
+    }
 
     return (
 
@@ -42,6 +55,9 @@ const Navigation = React.memo(() => {
                             </li>
                         );
                     })}
+                     <li className="nav-item">
+                        <button className="btn btn-warning" onClick={switchTheme}>Switch Theme</button>
+                    </li>
 
                 </ul>
             </div>

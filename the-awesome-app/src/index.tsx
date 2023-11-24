@@ -5,18 +5,23 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
-import { AppThemeContext, initialTheme } from './context/AppThemeContext';
+import AppThemeProvider, { AppThemeContext, initialTheme } from './context/AppThemeContext';
+import AppErrorBoundary from './error-boundary/AppErrorBoundary';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <AppThemeContext.Provider value={initialTheme}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </AppThemeContext.Provider>
+    {/* <AppThemeContext.Provider value={initialTheme}> */}
+    <AppErrorBoundary>
+      <AppThemeProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </AppThemeProvider>
+    </AppErrorBoundary>
+    {/* </AppThemeContext.Provider> */}
   </React.StrictMode>
 );
 

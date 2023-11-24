@@ -1,12 +1,12 @@
 import {ChangeEvent, useState, useRef, useEffect} from 'react';
 import { withBorder } from '../hoc/withBorder';
 
-function FnCounter(){
+function FnCounterWithError(){
 
     const [counter, setCounter] = useState(5);
     const inputRef = useRef<HTMLInputElement>(null)
 
-
+    
    
 
    
@@ -51,9 +51,12 @@ function FnCounter(){
         setCounter(Number( inputRef.current?.value));
     }
 
+    let obj: any = {name: "Anil"};
+
     return (
         <div>
             <h4>Counter: {counter}</h4>
+            <p>Name: {obj}</p>
             <div>
                 <button onClick={inc}>++</button>&nbsp;
                 <button onClick={decr}>--</button>
@@ -71,4 +74,4 @@ function FnCounter(){
     )
 }
 
-export default withBorder(FnCounter);
+export default withBorder(FnCounterWithError);
