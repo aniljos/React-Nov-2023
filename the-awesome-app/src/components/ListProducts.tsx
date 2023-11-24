@@ -91,7 +91,7 @@ function ListProducts() {
             <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'center' }}>
                 {products.map((item: Product) => {
                     return (
-                        <div className='product' key={item.id}>
+                        <div className='product' key={item.id} data-testid="product">
                             <p>Id: {item.id}</p>
                             <p>{item.name}</p>
                             <p>{item.price}</p>

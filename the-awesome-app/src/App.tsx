@@ -8,7 +8,7 @@ import { Suspense } from 'react';
 function App() {
   return (
 
-    <Router basename='/Training/'>
+    <Router>
       <div className='container-fluid'>
 
         <Navigation />

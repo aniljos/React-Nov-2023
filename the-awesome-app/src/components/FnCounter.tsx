@@ -64,7 +64,8 @@ function FnCounter(){
             </div>
             <div>
                 {/* uncontrolled input */}
-                Update Counter: <input ref={inputRef} type="number" defaultValue={counter}/> &nbsp;
+                Update Counter: <input ref={inputRef} 
+                                    type="number" defaultValue={counter} placeholder='Update Counter'/> &nbsp;
                 <button onClick={handleUpdate}>Update</button>
             </div>
         </div>
