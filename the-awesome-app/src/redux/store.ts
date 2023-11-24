@@ -2,6 +2,7 @@ import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import {authReducer} from './authReducer';
 import {gadgetsReducer} from './gadgetsReducers';
 import thunk from 'redux-thunk';
+import {configureStore} from '@reduxjs/toolkit';
 
 const reducers = combineReducers({
     auth: authReducer,
@@ -27,8 +28,16 @@ const loggingMiddleware = (store: any) => {
 
 //export const store = createStore(reducers, applyMiddleware(loggingMiddleware));
 
-const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-export const store = createStore(reducers,  composeEnhancers(applyMiddleware(loggingMiddleware, thunk)));
+//** Store with middleware and the  __REDUX_DEVTOOLS_EXTENSION__*/
+
+// const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// export const store = createStore(reducers,  composeEnhancers(applyMiddleware(loggingMiddleware, thunk)));
                     
+// ** Configure Store
+export const store = configureStore({
+    reducer: reducers,
+    middleware: [loggingMiddleware, thunk],
+    devTools: true
+});
 export type AppDispatch = typeof store.dispatch;
 export type AppState = ReturnType<typeof store.getState>;

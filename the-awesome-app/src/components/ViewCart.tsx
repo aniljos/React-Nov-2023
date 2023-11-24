@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, AppState } from "../redux/store";
 import { CartItem } from "../model/CartItem";
 import { createRemoveFromCartAction } from "../redux/actionCreators";
+import { removeFromCart } from "../redux/gadgetsReducers";
 
 function ViewCart() {
 
@@ -11,7 +12,9 @@ function ViewCart() {
     function removeItem(cartItem : CartItem){
         //dispatch({type: "REMOVE_FROM_CART", product: cartItem.product});
         if(cartItem.product){
-            dispatch(createRemoveFromCartAction(cartItem.product));
+            //dispatch(createRemoveFromCartAction(cartItem.product));
+
+            dispatch(removeFromCart(cartItem.product));
         }
         
     }

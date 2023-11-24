@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { AppDispatch, AppState } from '../redux/store';
 import { createAddToCartAction, createSetProductsAction } from '../redux/actionCreators';
 import { useEffect } from 'react';
+import { addItemToCart, fetchProductsAsync } from '../redux/gadgetsReducers';
 
 function GadgetStore(){
 
@@ -14,7 +15,8 @@ function GadgetStore(){
     
     useEffect(() => {
 
-        dispatch(createSetProductsAction())
+        //dispatch(createSetProductsAction())
+        dispatch(fetchProductsAsync());
 
     }, [])
 
@@ -22,7 +24,9 @@ function GadgetStore(){
     function addToCart(product: Product){
 
         //dispatch({type: "ADD_TO_CART", payload: new CartItem(product, 1)});
-        dispatch(createAddToCartAction(new CartItem(product, 1)));
+        //dispatch(createAddToCartAction(new CartItem(product, 1)));
+
+        dispatch(addItemToCart(new CartItem(product, 1)));
     }
     
     function renderProducts() {
